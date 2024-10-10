@@ -1,69 +1,53 @@
 <template>
-  <v-app id="inspire">
-    <v-app-bar class="px-3" density="compact" flat>
-      <v-avatar class="hidden-md-and-up" color="grey-darken-1" size="32"></v-avatar>
-
+<v-app id="inspire">
+    <v-system-bar>
       <v-spacer></v-spacer>
 
-      <v-tabs color="grey-darken-2" centered>
-        <v-tab v-for="link in links" 
-        :key="link" 
-        :to="link.vodi"
-        :text="link.tekst"
-        ></v-tab>
-      </v-tabs>
-      <v-spacer></v-spacer>
+      <v-icon>mdi-square</v-icon>
 
-      <v-avatar class="hidden-sm-and-down" color="grey-darken-1" size="32"></v-avatar>
+      <v-icon>mdi-circle</v-icon>
+
+      <v-icon>mdi-triangle</v-icon>
+    </v-system-bar>
+
+    <v-app-bar>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-app-bar-title>Naša online knjižnica</v-app-bar-title>
     </v-app-bar>
 
-    <v-main class="bg-grey-lighten-3">
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="2">
-            <v-sheet min-height="268" rounded="lg">
-              <!--  -->
-            </v-sheet>
-          </v-col>
+    <v-navigation-drawer
+      v-model="drawer"
+      temporary
+    >
+      <!--  -->
+    </v-navigation-drawer>
 
-          <v-col cols="12" md="8">
-            <v-sheet min-height="70vh" rounded="lg">
-              <router-view/>
-            </v-sheet>
-          </v-col>
-
-          <v-col cols="12" md="2">
-            <v-sheet min-height="268" rounded="lg">
-              <!--  -->
-            </v-sheet>
-          </v-col>
-        </v-row>
-      </v-container>
+    <v-main class="bg-grey-lighten-2">
+      <router-view/>
     </v-main>
   </v-app>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    links: [
-      {
-        tekst: "Početna",
-        vodi: "/"
-      },
-      {
-        tekst: "Blog",
-        vodi: "/blog"
-      },
-      {
-        tekst: "O nama",
-        vodi: "/onama"
-      },
-      {
-        tekst: "Kontakt",
-        vodi: "/kontakt"
-      }
-    ]
-  })
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-</script>
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
