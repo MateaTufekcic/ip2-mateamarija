@@ -32,12 +32,15 @@
           ></v-pagination>
         </v-col>
       </v-row>
+      
     </v-container>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import BookItems from "../components/BookItems.vue";
+
 export default {
   name: 'HomeView',
   components: {
@@ -72,7 +75,7 @@ export default {
       const api = "https://api.nytimes.com/svc/books/v3/lists/names.json";
       this.isLoading = true;
 
-      this.axios.get(api, {
+      axios.get(api, {
         params: {
           "api-key": "ovG52UU2j2mAXjghMHG2ucTlkSnA64jx",
           "list_name": this.search || undefined
@@ -113,5 +116,5 @@ export default {
 </script>
 
 <style>
-
+/* Dodaj stilove prema potrebi */
 </style>
